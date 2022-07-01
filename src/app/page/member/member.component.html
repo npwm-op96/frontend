@@ -1,0 +1,59 @@
+<br />
+<button (click)="creteUser()" class="btn btn-primary">creteUser</button>
+<br />
+<hr />
+<div class="mb-6">
+  <!-- <label for="exampleFormControlInput1" class="form-label">Search :</label> -->
+  <input
+    [(ngModel)]="Search"
+    type="text"
+    class="form-control"
+    id="exampleFormControlIn put1"
+  />
+  <button type="button" (click)="Searchs()" class="form-control" class="btn btn-right">Search</button>
+</div>
+<br>
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">NO</th>
+          <th scope="col">USERID</th>
+          <th scope="col">USERNAME</th>
+          <th scope="col">first_name</th>
+          <th scope="col">last_name</th>
+          <th scope="col">create_by</th>
+          <th scope="col">create_date</th>
+          <th scope="col">last_update_date</th>
+          <th scope="col">edit</th>
+          <th scope="col">delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of results; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.id }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname || "..." }}</td>
+          <td>{{ item.Create_By || ".." }}</td>
+          <td>{{ item.createdAt | date: "dd/MM/yyyy hh:mm " }}</td>
+          <td>{{ item.updatedAt | date: "dd/MM/yyyy hh:mm " }}</td>
+          <td>
+            <button (click)="editUser(item)" class="btn btn-sm btn-success">
+              Click
+            </button>
+          </td>
+          <td>
+            <button (click)="deleteUser(item)" class="btn btn-sm btn-danger">
+              Click
+            </button>
+          </td>
+        </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- {{item.username}} -->
+</div>

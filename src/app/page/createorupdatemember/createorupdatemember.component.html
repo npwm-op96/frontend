@@ -1,0 +1,79 @@
+<div> 
+    {{id!=null ?'แก้ไข':'สร้าง'}} สมาชิก
+  <form onsubmit="saveUser()" [formGroup]="userForm">
+    <div class="mb-6">
+      <label for="exampleFormControlInput1" class="form-label"
+        >username :</label
+      >
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        id="exampleFormControlIn put1"
+      />
+    </div>
+    <div class="mb-6">
+        <label for="exampleFormControlInput1" class="form-label"
+          >firstname :</label
+        >
+        <input
+          type="text"
+          formControlName="firstname"
+          class="form-control"
+          id="exampleFormControlIn put1"
+        />
+      </div>
+    <div class="mb-6">
+      <label for="exampleFormControlInput1" class="form-label"
+        >lastname :</label
+      >
+      <input
+        type="text"
+        formControlName="lastname"
+        class="form-control"
+        id="exampleFormControlIn put1"
+      />
+    </div>
+    <div class="mb-6">
+      <label for="exampleFormControlInput1" class="form-label">email :</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        id="exampleFormControlIn put1"
+      />
+    </div>
+    <div class="mb-6">
+      <label for="exampleFormControlInput1" class="form-label">Province :</label>
+      <select  class="form-select" formControlName="Province" (change)="selectProvince($event)">
+        <option [ngValue]="null"  disabled>Select Province</option>
+        <option *ngFor="let province of Province" [ngValue]="province.id">{{province.province_name}}</option>
+      </select>
+    </div>
+    <div class="mb-6">
+      <label for="exampleFormControlInput1" class="form-label">Khet :</label>
+      <select  class="form-select" (change)="selectKhet($event)" formControlName="Khet">
+        <option [ngValue]="null" disabled>Select Khet</option>
+        <option *ngFor="let khet of Khet" [ngValue]="khet.id">{{khet.district_name}}</option>
+      </select>
+    </div>
+    <div class="mb-6">
+      <label for="exampleFormControlInput1" class="form-label">Khwang :</label>
+      <select  class="form-select" formControlName="Khwang">
+        <option [ngValue]="null" disabled>Select Khwang</option>
+        <option *ngFor="let khwang of Khwang" [ngValue]="khwang.id">{{khwang.sdistrict_name}}</option>
+      </select>
+    </div>
+    <div class="mb-6">
+        <label for="exampleFormControlInput1" class="form-label">Zipcode :</label>
+        <select   class="form-select" formControlName="Zipcode">
+            <option [ngValue]="null" disabled>Select Zipcode</option>
+            <option *ngFor="let zipcode of Zipcode" [ngValue]="zipcode.id">{{zipcode.zipcode_no}}</option>
+          </select>
+      </div>
+      <br>
+      <hr>
+      <!-- [disabled]="userForm" -->
+      <button (click)="saveUser()"  class="btn btn-primary" type="button">
+        {{ id!=null ?'แก้ไข':'สร้าง'}}</button>  </form>
+</div>
